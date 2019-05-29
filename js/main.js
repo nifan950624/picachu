@@ -48,6 +48,11 @@
 
 
     var code = `
+    /*
+    *您好我将以代码的形式给您画一只皮卡丘*
+            *首先我们先给皮卡丘皮肤*
+    */  
+     
     #picachu{
         background-color: rgb(255, 230, 0);
     }
@@ -59,7 +64,8 @@
         position: relative;
         z-index: 0;
     }
-    
+
+    /*我们来开始画它的鼻子*/
     .nose {
         border: 14px solid transparent;
         border-top-color: black;
@@ -71,7 +77,8 @@
         top: 32px;
         transform: translateX(-50%)
     }
-    
+
+    /*下面要开始画眼睛了*/
     .eye {
         border: 2px black solid;
         width: 55px;
@@ -80,7 +87,8 @@
         position: absolute;
         border-radius: 50%;
     }
-    
+
+    /*这是它的眼珠*/
     .eye::after {
         content: '';
         border: black 3px solid;
@@ -91,7 +99,8 @@
         background: white;
         left: 5px;
     }
-    
+
+    /*左眼在左边*/
     .eye.left {
         right: 50%;
         margin-right: 63px;
@@ -101,7 +110,8 @@
         left: 50%;
         margin-left: 63px;
     }
-    
+
+    /*画它红色的小脸*/
     .face {
         border: 3px black solid;
         width: 75px;
@@ -122,6 +132,7 @@
         margin-left: 97px;
     }
     
+    /*画它的上嘴唇*/
     .upperlip {
         border: black 3px solid;
         position: absolute;
@@ -147,6 +158,7 @@
         left: 50%;
     }
 
+    /*最后一步，画它的嘴巴*/
     .lowlip-hidden {
         z-index: -1;
         overflow: hidden;
@@ -190,6 +202,12 @@
         bottom: -70px;
         border-radius: 80%;
         background-color: rgb(255, 72, 95);
-    } `
+    } 
+
+    /*
+    *好了我画完了，是不是很可爱呀
+    *希望您喜欢，谢谢观看
+    */
+    `
     writeCode('', code);
 }.call()
