@@ -159,15 +159,6 @@
     }
 
     /*最后一步，画它的嘴巴*/
-    .lowlip-hidden {
-        z-index: -1;
-        overflow: hidden;
-        position: relative;
-        width: 250px;
-        height: 140px;
-        top: 69px;    
-    }
-    
     .lowlip {
         overflow: hidden;
         border-radius: 150px/1700px;
@@ -176,10 +167,18 @@
         right: 50%;
         transform: translateX(50%);
         width: 100%;
-        height: 30000px;
+        height: 4000px;
         border: solid 2px black;
-        background-color: rgb(155, 0, 10);   
-                   
+        background-color: rgb(155, 0, 10);                  
+    }
+
+    .lowlip-hidden {
+        z-index: -1;
+        overflow: hidden;
+        position: relative;
+        width: 250px;
+        height: 140px;
+        top: 69px;    
     }
     
     .upperlip::after {
