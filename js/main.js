@@ -184,7 +184,7 @@
     .upperlip::after {
         content: '';
         height: 15px;
-        width: 60px;
+        width: 50px;
         position: absolute;
         background-color: rgb(255, 230, 0);
         bottom: 15px;
