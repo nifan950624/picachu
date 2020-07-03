@@ -4,10 +4,10 @@
 }
 
 body {
-  height: 100vh;
   display: flex;
-  flex-direction: column;
   width: 100vw;
+  height: 100vh;
+  flex-direction: column;
   box-sizing: border-box;
 }
 
@@ -27,6 +27,8 @@ body {
 .write > pre {
   overflow: auto;
   height: 100%;
+  font-size: 14px;
+  color: #3C4145;
 }
 
 .write > pre::-webkit-scrollbar {
@@ -36,18 +38,6 @@ body {
 .write > pre::-webkit-scrollbar-thumb {
   background-color: grey;
   border-radius: 7px
-}
-
-#picachu {
-  border-top: none;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  height: 50%;
-  width: 100%;
-  overflow: hidden;
 }
 
 .btns {
@@ -71,4 +61,16 @@ body {
 .btns > button.active {
   transition: all 0.5s;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.9);
+}
+
+.token.selector {
+  color: #2F8A42;
+}
+
+.token.property {
+  color: #3876CE;
+}
+
+.token.comment {
+  color: #737C85;
 }

@@ -4,13 +4,12 @@
     *这将以代码的形式画一只皮卡丘*
     *首先我们先给皮卡丘皮肤*
     */  
-       
     .pikaqiu {
       width: 100vw;
       flex: 0 0 310px;
       background: #ffe000;
     }
-     
+       
     /*下面要开始画眼睛了*/  
     .eye {
       position: absolute;
@@ -188,10 +187,14 @@
         break
       case 'result':
         clearTimeout(timer)
-        content.innerHTML = code
+        content.innerHTML = Prism.highlight(
+            code,
+            Prism.languages.css,
+            "css"
+        )
+        content.scrollTop = content.scrollHeight
         style.innerHTML = code
         isReload = true
-        content.scrollTop = content.scrollHeight
         break
     }
   })
@@ -201,13 +204,18 @@
     var reg = /[\s\n]/
 
     timer = setTimeout(function run() {
+
       n++
       while (reg.test(code[n])) {
         n++
       }
-      content.innerHTML = previous + code.substring(0, n)
-      content.scrollTop = content.scrollHeight
+      content.innerHTML = Prism.highlight(
+          previous + code.substring(0, n),
+          Prism.languages.css,
+          "css"
+      )
       style.innerHTML = previous + code.substring(0, n)
+      content.scrollTop = content.scrollHeight
       if (n <= code.length) {
         timer = setTimeout(run, time)
       } else {
@@ -217,4 +225,9 @@
   }
 
   writeCode('', code, () => isReload = true)
+
+  // Rainbow.color(code, {
+  //   language: 'css',
+  //   globalClass: 'animate'
+  // });
 })()
