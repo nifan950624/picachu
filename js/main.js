@@ -1,212 +1,220 @@
-
-!function () {
-    var time = 50
-    var id;
-    var content = document.querySelector('#codeTag');
-    var style = document.querySelector('#styleTag');
-       
-    $('.btns').on('click', 'button', function (e) {
-        let $button = $(e.currentTarget);
-        let speed = $button.attr('data')
-        $($button).addClass('active')
-            .siblings().removeClass('active')
-        switch (speed) {
-            case 'slow':
-                time = 100;
-                break;
-            case 'normal': 
-                time = 50;
-                break;
-            case 'fast':
-
-                time = 0;
-                break;
-            case 'result':
-                clearTimeout(id)
-                content.innerHTML = code;
-                style.innerHTML = code;
-                content.scrollTop = content.scrollHeight;
-                break;
-        }
-    })
-  
-
-    function writeCode(previous, code, fn) {
-        let n = 0;
-        id = setTimeout(function run() {
-            n++
-            content.innerHTML = previous + code.substring(0, n);
-            content.scrollTop = content.scrollHeight;
-            style.innerHTML = previous + code.substring(0, n);
-            if (n <= code.length) {
-                id = setTimeout(run, time)
-            } else {
-                fn && fn.call()
-            }
-        }, time)
-    }
-
-
-    var code = `
+(function () {
+  var code = `
     /*
-    *您好我将以代码的形式给您画一只皮卡丘*
-            *首先我们先给皮卡丘皮肤*
+    *这将以代码的形式画一只皮卡丘*
+    *首先我们先给皮卡丘皮肤*
     */  
+       
+    .pikaqiu {
+      width: 100vw;
+      flex: 0 0 310px;
+      background: #ffe000;
+    }
      
-    #picachu{
-        background-color: rgb(255, 230, 0);
+    /*下面要开始画眼睛了*/  
+    .eye {
+      position: absolute;
+      top: 20px;
+      width: 60px;
+      height: 60px;
+      background: #2e2e2e;
+      border: 2px solid #000;
+      border-radius: 50%;
     }
     
-    .wraper {
-        max-width: 100%;
-        height: 225px;
-        box-sizing: border-box;
-        position: relative;
-        z-index: 0;
-    }
-
-    /*我们来开始画它的鼻子*/
-    .nose {
-        border: 14px solid transparent;
-        border-top-color: black;
-        border-radius: 40%;
-        width: 0;
-        height: 0;
-        position: absolute;
-        left: 50%;
-        top: 32px;
-        transform: translateX(-50%)
-    }
-
-    /*下面要开始画眼睛了*/
-    .eye {
-        border: 2px black solid;
-        width: 55px;
-        height: 55px;
-        background-color: rgb(46, 46, 46);
-        position: absolute;
-        border-radius: 50%;
-    }
-
     /*这是它的眼珠*/
     .eye::after {
-        content: '';
-        border: black 3px solid;
-        width: 23px;
-        height: 23px;
-        position: absolute;
-        border-radius: 50%;
-        background: white;
-        left: 5px;
-    }
-
-    /*左眼在左边*/
-    .eye.left {
-        right: 50%;
-        margin-right: 63px;
+      content: '';
+      display: block;
+      width: 30px;
+      height: 30px;
+      margin-left: 8px;
+      background: #FFF;
+      border: 2px solid #000;
+      border-radius: 50%;
     }
     
-    .eye.right {
-        left: 50%;
-        margin-left: 63px;
+    /*左眼在左边*/
+    .eye-left {
+      left: 70px;
+    }
+    
+    /*右眼在右边*/
+    .eye-right {
+      right: 70px;
+    }
+    
+    /*我们来开始画它的鼻子*/
+    .nose {
+      position: absolute;
+      left: 50%;
+      top: 50px;
+      transform: translateX(-50%);
+      width: 0;
+      border-top: 20px solid #000;
+      border-bottom: none;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+    }
+    
+    /*画它的嘴巴*/
+    .upperLip {
+      display: flex;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 80px;
+      z-index: 1;
     }
 
+    .upperLip::before {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 20px;
+      transform: rotate(-20deg);
+      background: #ffe000;
+      border: 3px solid #000;
+      border-top: none;
+      border-right: none;
+      border-bottom-left-radius: 76% 96%;
+    }
+
+    .upperLip::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 20px;
+      transform: rotate(20deg);
+      background: #ffe000;
+      border: 3px solid #000;
+      border-top: none;
+      border-left: none;
+      border-bottom-right-radius: 76% 96%;
+    }
+
+    .lowerLip {
+      position: absolute;
+      left: 50%;
+      top: 88px;
+      transform: translateX(-50%);
+      width: 124px;
+      height: 150px;
+      background: #9d0512;
+      border: 2px solid #000;
+      border-top: none;
+      border-bottom-left-radius: 62px 150px;
+      border-bottom-right-radius: 62px 150px;
+      overflow: hidden;
+    }
+
+    .lowerLip:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      width: 166px;
+      height: 166px;
+      margin: 22px auto 0;
+      transform: translateX(-50%);
+      background: #fc4653;
+      border-radius: 50%;
+    }
+    
     /*画它红色的小脸*/
     .face {
-        border: 3px black solid;
-        width: 75px;
-        height: 75px;
-        background-color: rgb(255, 0, 0);
-        border-radius: 50%;
-        position: absolute;
-        top: 95px;
-    }
-    
-    .face.left {
-        right: 50%;
-        margin-right: 97px;
-    }
-    
-    .face.right {
-        left: 50%;
-        margin-left: 97px;
-    }
-    
-    /*画它的上嘴唇*/
-    .upperlip {
-        border: black 3px solid;
-        position: absolute;
-        width: 65px;
-        height: 20px;
-        top: 65px;
-        background-color: rgb(255, 230, 0);
-    }
-    
-    .upperlip.left {
-        border-bottom-left-radius: 45px 20px;
-        border-top: none;
-        border-right: none;
-        transform: rotate(-25deg);
-        right: 50%;
-    }
-    
-    .upperlip.right {
-        border-bottom-right-radius: 45px 20px;
-        border-top: none;
-        border-left: none;
-        transform: rotate(25deg);
-        left: 50%;
+      position: absolute;
+      bottom: 20px;
+      width: 80px;
+      height: 80px;
+      background: #fb0d1c;
+      border: 2px solid #000;
+      border-radius: 50%;
     }
 
-    /*最后一步，画它的嘴巴*/
-    .lowlip {
-        overflow: hidden;
-        border-radius: 150px/1700px;
-        position: absolute;
-        bottom: 0; 
-        right: 50%;
-        transform: translateX(50%);
-        width: 100%;
-        height: 4000px;
-        border: solid 2px black;
-        background-color: rgb(155, 0, 10);                  
+    .face-left {
+      left: 10px;
     }
 
-    .lowlip-hidden {
-        z-index: -1;
-        overflow: hidden;
-        position: relative;
-        width: 250px;
-        height: 140px;
-        top: 69px;    
+    .face-right {
+      right: 10px;
     }
     
-    .upperlip::after {
-        content: '';
-        height: 15px;
-        width: 50px;
-        position: absolute;
-        background-color: rgb(255, 230, 0);
-        bottom: 15px;
-        left: 10px
-    }
-          
-    .lowlip::before {
-        content: '';
-        position: absolute;
-        height: 180px;
-        width: 140px;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -70px;
-        border-radius: 80%;
-        background-color: rgb(255, 72, 95);
-    } 
-
     /*
     *好了我画完了，是不是很可爱呀
     *希望您喜欢，谢谢观看
     */
     `
-    writeCode('', code);
-}.call()
+  var time = 50
+  var timer = null
+  var content = document.querySelector('#codeTag')
+  var style = document.querySelector('#styleTag')
+  var isReload = false
+  var lastSpeed = 'normal'
+
+  $('.btns').on('click', 'button', function (e) {
+    var $button = $(e.currentTarget);
+    var speed = $button.attr('data')
+
+    if (lastSpeed === speed) {
+      return false
+    }
+
+    lastSpeed = speed
+    $($button).addClass('active')
+        .siblings().removeClass('active')
+
+    if (isReload) {
+      $(content).children().remove()
+      $(style).children().remove()
+
+      writeCode('', code, () => {
+        isReload = true
+      })
+      isReload = false
+    }
+
+    switch (speed) {
+      case 'slow':
+        time = 120
+        break
+      case 'normal':
+        time = 60
+        break
+      case 'fast':
+        time = 0
+        break
+      case 'result':
+        clearTimeout(timer)
+        content.innerHTML = code
+        style.innerHTML = code
+        isReload = true
+        content.scrollTop = content.scrollHeight
+        break
+    }
+  })
+
+  function writeCode(previous, code, fn) {
+    var n = 0
+    var reg = /[\s\n]/
+
+    timer = setTimeout(function run() {
+      n++
+      while (reg.test(code[n])) {
+        n++
+      }
+      content.innerHTML = previous + code.substring(0, n)
+      content.scrollTop = content.scrollHeight
+      style.innerHTML = previous + code.substring(0, n)
+      if (n <= code.length) {
+        timer = setTimeout(run, time)
+      } else {
+        fn && fn.call()
+      }
+    }, time)
+  }
+
+  writeCode('', code, () => isReload = true)
+})()

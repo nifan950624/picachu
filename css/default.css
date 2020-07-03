@@ -1,68 +1,74 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.pikaqiu-container {
+  position: relative;
+  margin: 30px auto 30px;
+  width: 440px;
+  height: 250px;
 }
 
 .write {
-    flex: 1;
-    height: 50%;
-    width: 100%;
+  flex: 1;
+  height: 50%;
+  width: 100%;
 }
 
-.write>pre {
-    overflow: auto;
-    height: 100%;
+.write > pre {
+  overflow: auto;
+  height: 100%;
 }
 
-.write>pre::-webkit-scrollbar
-{
-    width: 5px;
+.write > pre::-webkit-scrollbar {
+  width: 5px;
 }
 
-.write>pre::-webkit-scrollbar-thumb{
+.write > pre::-webkit-scrollbar-thumb {
   background-color: grey;
   border-radius: 7px
 }
 
 #picachu {
-    border-top: none;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    height: 50%;
-    width: 100%;
-    overflow: hidden;
+  border-top: none;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 50%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .btns {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    display: flex;
-    flex-direction: column;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  flex-direction: column;
 }
 
 .btns button {
-    margin: 10px;
-    outline: none;
-    border: 1px black solid;
-    padding: 1px 4px;
-    background-color: rgb(255,150,65);
-    font-weight: 600;
-    border-radius: 5px;
+  margin: 10px;
+  outline: none;
+  border: 1px black solid;
+  padding: 1px 4px;
+  background-color: rgb(255, 150, 65);
+  font-weight: 600;
+  border-radius: 5px;
 }
 
-.btns>button.active {
-    transition: all 0.5s;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.9);
+.btns > button.active {
+  transition: all 0.5s;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.9);
 }
